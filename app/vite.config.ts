@@ -36,6 +36,10 @@ export default defineConfig({
         }),
     ]),
     server: {
+        // Porta própria (VITE_PORT do docker-compose) para não colidir com os
+        // outros projetos do servidor, que usam a 5173.
+        port: Number(process.env.VITE_PORT ?? 5175),
+        strictPort: true,
         watch: {
             ignored: [
                 '**/.agents/**',
