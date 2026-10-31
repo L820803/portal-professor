@@ -1,0 +1,59 @@
+#!/usr/bin/env bash
+set -e
+
+echo "¿ Iniciando container em modo PRODUÇÃO..."
+
+# Ajuste de UID do usuário sail (caso WWWUSER esteja definido)
+if [ ! -z "$WWWUSER" ]; then
+    echo "¿ Ajustando UID do usuário sail para $WWWUSER..."
+    usermod -u $WWWUSER sail
+fi
+
+# Criar diretório composer se não existir
+if [ ! -d /.composer ]; then
+    mkdir /.composer
+fi
+chmod -R ugo+rw /.composer
+
+# Garantir permissões corretas
+echo "¿ Verificando permissões..."
+chown -R sail:sail /var/www/html/storage
+chown -R sail:sail /var/www/html/bootstrap/cache
+chmod -R 775 /var/www/html/storage
+chmod -R 775 /var/www/html/bootstrap/cache
+
+# Garantir que public/build existe e tem permissões corretas
+if [ -d /var/www/html/public/build ]; then
+    chmod -R 755 /var/www/html/public/build
+    echo "¿ Diretório public/build configurado"
+fi
+
+# Criar link simbólico do storage se não existir
+if [ ! -L /var/www/html/public/storage ]; then
+    echo "¿ Criando link simbólico do storage..."
+    gosu sail php /var/www/html/artisan storage:link
+fi
+
+# Executar migrations (opcional - comentar se não desejar automático)
+#if [ "${RUN_MIGRATIONS}" = "true" ]; then
+#    echo "¿ Executando migrations..."
+#    gosu sail php /var/www/html/artisan migrate --force --no-interaction
+#fi
+
+# Limpar caches antigos e recriar
+echo "¿ Recriando caches do Laravel..."
+#gosu sail php /var/www/html/artisan config:cache
+#gosu sail php /var/www/html/artisan route:cache
+#gosu sail php /var/www/html/artisan view:cache
+
+gosu sail php /var/www/html/artisan optimize:clear
+gosu sail php /var/www/html/artisan optimize
+
+echo "¿ Inicialização completa. Iniciando supervisord..."
+
+# Iniciar supervisord
+if [ $# -gt 0 ]; then
+    exec gosu sail "$@"
+else
+    exec /usr/bin/supervisord -c /etc/supervisor/conf.d/supervisord.conf
+fi

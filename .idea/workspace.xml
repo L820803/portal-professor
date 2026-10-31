@@ -1,0 +1,288 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="10b64495-6544-4258-ae21-ad307d728895" name="Changes" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ComposerSettings" synchronizationState="SYNCHRONIZE">
+    <pharConfigPath>$PROJECT_DIR$/app/composer.json</pharConfigPath>
+    <execution>
+      <executable />
+    </execution>
+  </component>
+  <component name="DatabaseLocalColorSettings">
+    <colors>
+      <entry key="919f8567-b7cf-421b-b8d9-bfecc2b81089" value="" />
+    </colors>
+  </component>
+  <component name="NextEditCompletionFeaturesState">
+    <decayedCancelled>
+      <entry key="MS100" value="1.0" />
+      <entry key="MS500" value="1.0" />
+      <entry key="S2" value="1.0000857799499638" />
+      <entry key="S5" value="1.023624047948897" />
+      <entry key="S10" value="1.1537011644357227" />
+      <entry key="S30" value="1.5356639085799069" />
+      <entry key="S60" value="1.7318906397679605" />
+      <entry key="M2" value="1.8555075688389508" />
+      <entry key="M5" value="2.024622420771869" />
+      <entry key="M10" value="5.6448168114554536" />
+      <entry key="M15" value="15.118699648676136" />
+      <entry key="M30" value="49.49818906026722" />
+      <entry key="H1" value="92.76045192994445" />
+      <entry key="H2" value="127.61347946131451" />
+      <entry key="H4" value="149.82408639094317" />
+      <entry key="D1" value="171.33311591433764" />
+      <entry key="W1" value="175.32544339676437" />
+    </decayedCancelled>
+    <decayedSelected>
+      <entry key="MS100" value="0.0" />
+      <entry key="MS500" value="0.0" />
+      <entry key="S2" value="0.0" />
+      <entry key="S5" value="0.0" />
+      <entry key="S10" value="0.0" />
+      <entry key="S30" value="0.0" />
+      <entry key="S60" value="0.0" />
+      <entry key="M2" value="0.0" />
+      <entry key="M5" value="0.0" />
+      <entry key="M10" value="0.0" />
+      <entry key="M15" value="0.0" />
+      <entry key="M30" value="0.0" />
+      <entry key="H1" value="0.0" />
+      <entry key="H2" value="0.0" />
+      <entry key="H4" value="0.0" />
+      <entry key="D1" value="0.0" />
+      <entry key="W1" value="0.0" />
+    </decayedSelected>
+    <decayedShown>
+      <entry key="MS100" value="0.9138314502294005" />
+      <entry key="MS500" value="0.9821395952633915" />
+      <entry key="S2" value="0.9955881987568179" />
+      <entry key="S5" value="1.0215726552610427" />
+      <entry key="S10" value="1.1519823252710117" />
+      <entry key="S30" value="1.5344114493750773" />
+      <entry key="S60" value="1.7310897134534957" />
+      <entry key="M2" value="1.855052062318669" />
+      <entry key="M5" value="2.0244241928060718" />
+      <entry key="M10" value="5.644691475995479" />
+      <entry key="M15" value="15.118572939960295" />
+      <entry key="M30" value="49.49804622306418" />
+      <entry key="H1" value="92.7603296873258" />
+      <entry key="H2" value="127.61339766528333" />
+      <entry key="H4" value="149.82403887007132" />
+      <entry key="D1" value="171.33310692158253" />
+      <entry key="W1" value="175.32544208359184" />
+    </decayedShown>
+  </component>
+  <component name="PhpWorkspaceProjectConfiguration" interpreter_name="/bin/php">
+    <include_path>
+      <path value="$PROJECT_DIR$/app/vendor/nette/schema" />
+      <path value="$PROJECT_DIR$/app/vendor/nikic/php-parser" />
+      <path value="$PROJECT_DIR$/app/vendor/brick/math" />
+      <path value="$PROJECT_DIR$/app/vendor/nette/utils" />
+      <path value="$PROJECT_DIR$/app/vendor/voku/portable-ascii" />
+      <path value="$PROJECT_DIR$/app/vendor/bacon/bacon-qr-code" />
+      <path value="$PROJECT_DIR$/app/vendor/psy/psysh" />
+      <path value="$PROJECT_DIR$/app/vendor/filp/whoops" />
+      <path value="$PROJECT_DIR$/app/vendor/psr/http-message" />
+      <path value="$PROJECT_DIR$/app/vendor/psr/clock" />
+      <path value="$PROJECT_DIR$/app/vendor/psr/event-dispatcher" />
+      <path value="$PROJECT_DIR$/app/vendor/psr/http-client" />
+      <path value="$PROJECT_DIR$/app/vendor/psr/simple-cache" />
+      <path value="$PROJECT_DIR$/app/vendor/psr/container" />
+      <path value="$PROJECT_DIR$/app/vendor/psr/log" />
+      <path value="$PROJECT_DIR$/app/vendor/psr/http-factory" />
+      <path value="$PROJECT_DIR$/app/vendor/dflydev/dot-access-data" />
+      <path value="$PROJECT_DIR$/app/vendor/egulias/email-validator" />
+      <path value="$PROJECT_DIR$/app/vendor/vlucas/phpdotenv" />
+      <path value="$PROJECT_DIR$/app/vendor/dasprid/enum" />
+      <path value="$PROJECT_DIR$/app/vendor/ramsey/uuid" />
+      <path value="$PROJECT_DIR$/app/vendor/staabm/side-effects-detector" />
+      <path value="$PROJECT_DIR$/app/vendor/nesbot/carbon" />
+      <path value="$PROJECT_DIR$/app/vendor/ramsey/collection" />
+      <path value="$PROJECT_DIR$/app/vendor/league/commonmark" />
+      <path value="$PROJECT_DIR$/app/vendor/league/mime-type-detection" />
+      <path value="$PROJECT_DIR$/app/vendor/league/uri" />
+      <path value="$PROJECT_DIR$/app/vendor/league/config" />
+      <path value="$PROJECT_DIR$/app/vendor/league/flysystem" />
+      <path value="$PROJECT_DIR$/app/vendor/league/uri-interfaces" />
+      <path value="$PROJECT_DIR$/app/vendor/iamcal/sql-parser" />
+      <path value="$PROJECT_DIR$/app/vendor/league/flysystem-local" />
+      <path value="$PROJECT_DIR$/app/vendor/monolog/monolog" />
+      <path value="$PROJECT_DIR$/app/vendor/myclabs/deep-copy" />
+      <path value="$PROJECT_DIR$/app/vendor/laravel/wayfinder" />
+      <path value="$PROJECT_DIR$/app/vendor/mockery/mockery" />
+      <path value="$PROJECT_DIR$/app/vendor/laravel/chisel" />
+      <path value="$PROJECT_DIR$/app/vendor/laravel/tinker" />
+      <path value="$PROJECT_DIR$/app/vendor/laravel/prompts" />
+      <path value="$PROJECT_DIR$/app/vendor/laravel/pao" />
+      <path value="$PROJECT_DIR$/app/vendor/laravel/sail" />
+      <path value="$PROJECT_DIR$/app/vendor/laravel/passkeys" />
+      <path value="$PROJECT_DIR$/app/vendor/laravel/pail" />
+      <path value="$PROJECT_DIR$/app/vendor/laravel/fortify" />
+      <path value="$PROJECT_DIR$/app/vendor/laravel/agent-detector" />
+      <path value="$PROJECT_DIR$/app/vendor/laravel/framework" />
+      <path value="$PROJECT_DIR$/app/vendor/laravel/serializable-closure" />
+      <path value="$PROJECT_DIR$/app/vendor/laravel/pint" />
+      <path value="$PROJECT_DIR$/app/vendor/symfony/var-dumper" />
+      <path value="$PROJECT_DIR$/app/vendor/symfony/translation-contracts" />
+      <path value="$PROJECT_DIR$/app/vendor/symfony/polyfill-php81" />
+      <path value="$PROJECT_DIR$/app/vendor/symfony/http-foundation" />
+      <path value="$PROJECT_DIR$/app/vendor/symfony/polyfill-intl-normalizer" />
+      <path value="$PROJECT_DIR$/app/vendor/symfony/process" />
+      <path value="$PROJECT_DIR$/app/vendor/phpunit/php-file-iterator" />
+      <path value="$PROJECT_DIR$/app/vendor/phpunit/php-timer" />
+      <path value="$PROJECT_DIR$/app/vendor/phpunit/php-invoker" />
+      <path value="$PROJECT_DIR$/app/vendor/phpunit/phpunit" />
+      <path value="$PROJECT_DIR$/app/vendor/phpunit/php-code-coverage" />
+      <path value="$PROJECT_DIR$/app/vendor/phpunit/php-text-template" />
+      <path value="$PROJECT_DIR$/app/vendor/phpstan/phpstan" />
+      <path value="$PROJECT_DIR$/app/vendor/phpstan/phpdoc-parser" />
+      <path value="$PROJECT_DIR$/app/vendor/phar-io/manifest" />
+      <path value="$PROJECT_DIR$/app/vendor/phar-io/version" />
+      <path value="$PROJECT_DIR$/app/vendor/symfony/finder" />
+      <path value="$PROJECT_DIR$/app/vendor/symfony/polyfill-php86" />
+      <path value="$PROJECT_DIR$/app/vendor/symfony/http-kernel" />
+      <path value="$PROJECT_DIR$/app/vendor/symfony/service-contracts" />
+      <path value="$PROJECT_DIR$/app/vendor/symfony/polyfill-php80" />
+      <path value="$PROJECT_DIR$/app/vendor/symfony/polyfill-uuid" />
+      <path value="$PROJECT_DIR$/app/vendor/symfony/string" />
+      <path value="$PROJECT_DIR$/app/vendor/symfony/uid" />
+      <path value="$PROJECT_DIR$/app/vendor/symfony/mailer" />
+      <path value="$PROJECT_DIR$/app/vendor/symfony/serializer" />
+      <path value="$PROJECT_DIR$/app/vendor/symfony/mime" />
+      <path value="$PROJECT_DIR$/app/vendor/symfony/polyfill-ctype" />
+      <path value="$PROJECT_DIR$/app/vendor/symfony/css-selector" />
+      <path value="$PROJECT_DIR$/app/vendor/symfony/property-info" />
+      <path value="$PROJECT_DIR$/app/vendor/symfony/polyfill-intl-idn" />
+      <path value="$PROJECT_DIR$/app/vendor/symfony/polyfill-php84" />
+      <path value="$PROJECT_DIR$/app/vendor/symfony/clock" />
+      <path value="$PROJECT_DIR$/app/vendor/symfony/console" />
+      <path value="$PROJECT_DIR$/app/vendor/symfony/polyfill-time" />
+      <path value="$PROJECT_DIR$/app/vendor/symfony/event-dispatcher-contracts" />
+      <path value="$PROJECT_DIR$/app/vendor/symfony/polyfill-php82" />
+      <path value="$PROJECT_DIR$/app/vendor/symfony/property-access" />
+      <path value="$PROJECT_DIR$/app/vendor/symfony/routing" />
+      <path value="$PROJECT_DIR$/app/vendor/symfony/yaml" />
+      <path value="$PROJECT_DIR$/app/vendor/symfony/polyfill-mbstring" />
+      <path value="$PROJECT_DIR$/app/vendor/symfony/polyfill-intl-grapheme" />
+      <path value="$PROJECT_DIR$/app/vendor/symfony/polyfill-php85" />
+      <path value="$PROJECT_DIR$/app/vendor/symfony/type-info" />
+      <path value="$PROJECT_DIR$/app/vendor/symfony/error-handler" />
+      <path value="$PROJECT_DIR$/app/vendor/symfony/event-dispatcher" />
+      <path value="$PROJECT_DIR$/app/vendor/symfony/deprecation-contracts" />
+      <path value="$PROJECT_DIR$/app/vendor/symfony/translation" />
+      <path value="$PROJECT_DIR$/app/vendor/doctrine/deprecations" />
+      <path value="$PROJECT_DIR$/app/vendor/doctrine/inflector" />
+      <path value="$PROJECT_DIR$/app/vendor/doctrine/lexer" />
+      <path value="$PROJECT_DIR$/app/vendor/theseer/tokenizer" />
+      <path value="$PROJECT_DIR$/app/vendor/sebastian/diff" />
+      <path value="$PROJECT_DIR$/app/vendor/sebastian/recursion-context" />
+      <path value="$PROJECT_DIR$/app/vendor/sebastian/environment" />
+      <path value="$PROJECT_DIR$/app/vendor/sebastian/comparator" />
+      <path value="$PROJECT_DIR$/app/vendor/phpoption/phpoption" />
+      <path value="$PROJECT_DIR$/app/vendor/sebastian/object-enumerator" />
+      <path value="$PROJECT_DIR$/app/vendor/inertiajs/inertia-laravel" />
+      <path value="$PROJECT_DIR$/app/vendor/paragonie/constant_time_encoding" />
+      <path value="$PROJECT_DIR$/app/vendor/carbonphp/carbon-doctrine-types" />
+      <path value="$PROJECT_DIR$/app/vendor/fruitcake/php-cors" />
+      <path value="$PROJECT_DIR$/app/vendor/web-auth/cose-lib" />
+      <path value="$PROJECT_DIR$/app/vendor/web-auth/webauthn-lib" />
+      <path value="$PROJECT_DIR$/app/vendor/larastan/larastan" />
+      <path value="$PROJECT_DIR$/app/vendor/pragmarx/google2fa" />
+      <path value="$PROJECT_DIR$/app/vendor/fakerphp/faker" />
+      <path value="$PROJECT_DIR$/app/vendor/hamcrest/hamcrest-php" />
+      <path value="$PROJECT_DIR$/app/vendor/nunomaduro/collision" />
+      <path value="$PROJECT_DIR$/app/vendor/spomky-labs/cbor-php" />
+      <path value="$PROJECT_DIR$/app/vendor/guzzlehttp/psr7" />
+      <path value="$PROJECT_DIR$/app/vendor/nunomaduro/termwind" />
+      <path value="$PROJECT_DIR$/app/vendor/guzzlehttp/promises" />
+      <path value="$PROJECT_DIR$/app/vendor/guzzlehttp/uri-template" />
+      <path value="$PROJECT_DIR$/app/vendor/webmozart/assert" />
+      <path value="$PROJECT_DIR$/app/vendor/guzzlehttp/guzzle" />
+      <path value="$PROJECT_DIR$/app/vendor/sebastian/version" />
+      <path value="$PROJECT_DIR$/app/vendor/sebastian/cli-parser" />
+      <path value="$PROJECT_DIR$/app/vendor/sebastian/object-reflector" />
+      <path value="$PROJECT_DIR$/app/vendor/sebastian/type" />
+      <path value="$PROJECT_DIR$/app/vendor/sebastian/global-state" />
+      <path value="$PROJECT_DIR$/app/vendor/sebastian/exporter" />
+      <path value="$PROJECT_DIR$/app/vendor/sebastian/lines-of-code" />
+      <path value="$PROJECT_DIR$/app/vendor/sebastian/complexity" />
+      <path value="$PROJECT_DIR$/app/vendor/graham-campbell/result-type" />
+      <path value="$PROJECT_DIR$/app/vendor/phpdocumentor/reflection-common" />
+      <path value="$PROJECT_DIR$/app/vendor/phpdocumentor/type-resolver" />
+      <path value="$PROJECT_DIR$/app/vendor/dragonmantank/cron-expression" />
+      <path value="$PROJECT_DIR$/app/vendor/phpdocumentor/reflection-docblock" />
+      <path value="$PROJECT_DIR$/app/vendor/spomky-labs/pki-framework" />
+      <path value="$PROJECT_DIR$/app/vendor/tijsverkoyen/css-to-inline-styles" />
+      <path value="$PROJECT_DIR$/app/vendor/composer" />
+      <path value="$PROJECT_DIR$/app/vendor/symfony/polyfill-php83" />
+    </include_path>
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 8,
+  &quot;fromUser&quot;: false
+}</component>
+  <component name="ProjectId" id="3LQagEeCai7EK64fHV1JvQUHwvk" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
+    "codeWithMe.voiceChat.enabledByDefault": "false",
+    "com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1": "true",
+    "junie.onboarding.icon.badge.shown": "true",
+    "last_opened_file_path": "/home/agora/Área de Trabalho/develops/portal-professor",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "to.speed.mode.migration.done": "true"
+  },
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "sqlite"
+    ]
+  }
+}]]></component>
+  <component name="RunManager">
+    <configuration name="Main" type="PHPUnitRunConfigurationType" factoryName="PHPUnit">
+      <TestRunner configuration_file="$PROJECT_DIR$/app/phpunit.xml" scope="XML" use_alternative_configuration_file="true" />
+      <method v="2" />
+    </configuration>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-js-predefined-d6986cc7102b-4abd2a77f808-JavaScript-PS-262.11879.104" />
+        <option value="bundled-php-predefined-a98d8de5180a-9522f28f0b20-com.jetbrains.php.sharedIndexes-PS-262.11879.104" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="10b64495-6544-4258-ae21-ad307d728895" name="Changes" comment="" />
+      <created>1793388854829</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1793388854829</updated>
+      <workItem from="1793388855836" duration="1381000" />
+      <workItem from="1793402563821" duration="4114000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>

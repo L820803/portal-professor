@@ -1,0 +1,99 @@
+#!/usr/bin/env bash
+set -e
+
+# Validacao do usuario supervisor
+if [ "$SUPERVISOR_PHP_USER" != "root" ] && [ "$SUPERVISOR_PHP_USER" != "sail" ]; then
+    echo "You should set SUPERVISOR_PHP_USER to either 'sail' or 'root'."
+    exit 1
+fi
+
+# Ajuste de UID/GID do usuario sail para bater com o dono do codigo montado.
+# Se WWWUSER/WWWGROUP nao vierem do ambiente, usa o dono de /var/www/html,
+# senao o sail (uid 1337) nao consegue escrever em vendor/ e node_modules/.
+WWWUSER="${WWWUSER:-$(stat -c %u /var/www/html)}"
+WWWGROUP="${WWWGROUP:-$(stat -c %g /var/www/html)}"
+
+if [ "$WWWUSER" != "0" ] && [ "$(id -u sail)" != "$WWWUSER" ]; then
+    usermod -u "$WWWUSER" sail
+fi
+
+if [ "$WWWGROUP" != "0" ] && [ "$(id -g sail)" != "$WWWGROUP" ]; then
+    groupmod -o -g "$WWWGROUP" sail
+    usermod -g "$WWWGROUP" sail
+fi
+
+echo "Dono de /var/www/html: $(stat -c '%u:%g' /var/www/html) | sail: $(id -u sail):$(id -g sail)"
+
+# Roda como sail se ele puder escrever no codigo montado; senao como root.
+# Em Docker rootless/Docker Desktop (ou repo clonado com sudo) a pasta aparece
+# como root no container, e o root do container e o seu usuario no host.
+if gosu sail test -w /var/www/html; then
+    AS_OWNER="gosu sail"
+else
+    echo "sail nao consegue escrever em /var/www/html. Instalando dependencias como root."
+    AS_OWNER=""
+    # php, vite e workers do supervisor tambem precisam escrever no projeto
+    export SUPERVISOR_PHP_USER=root
+fi
+
+# Composer
+if [ ! -d /.composer ]; then
+    mkdir /.composer
+fi
+
+chmod -R ugo+rw /.composer
+
+export COMPOSER_ALLOW_SUPERUSER=1
+cd /var/www/html
+
+# --- Corrigir permissoes apenas nos diretorios que precisam ---
+echo "Corrigindo permissoes de storage e cache..."
+chown -R sail:sail /var/www/html/storage /var/www/html/bootstrap/cache
+chmod -R 775 /var/www/html/storage /var/www/html/bootstrap/cache
+# --------------------------------------------------------------
+
+# --- Dependencias PHP (vendor/ nao vai para o git) ---
+if [ ! -f /var/www/html/vendor/autoload.php ]; then
+    echo "vendor/ ausente. Instalando dependencias do Composer..."
+    $AS_OWNER composer install --no-interaction --prefer-dist
+fi
+# -----------------------------------------------------
+
+# --- .env (nao vai para o git) ---
+if [ ! -f /var/www/html/.env ] && [ -f /var/www/html/.env.example ]; then
+    echo ".env ausente. Copiando de .env.example..."
+    $AS_OWNER cp .env.example .env
+    $AS_OWNER php artisan key:generate
+fi
+# ---------------------------------
+
+# --- Criar link simbolico do storage se nao existir ---
+if [ ! -L /var/www/html/public/storage ]; then
+    echo "Criando link simbolico do storage..."
+    $AS_OWNER php /var/www/html/artisan storage:link || true
+fi
+# ------------------------------------------------------
+
+# --- Verificar dependencias do frontend ---
+if [ -f /var/www/html/package.json ]; then
+    echo "package.json encontrado. Verificando dependencias..."
+
+    if [ ! -d node_modules ]; then
+        echo "Instalando dependencias NPM..."
+        $AS_OWNER npm install --no-audit --no-fund
+    else
+        echo "node_modules ja existe. Pulando instalacao."
+    fi
+fi
+# ------------------------------------------
+
+# --- Inicializar o supervisord ---
+if [ $# -gt 0 ]; then
+    if [ "$SUPERVISOR_PHP_USER" = "root" ]; then
+        exec "$@"
+    else
+        exec gosu $WWWUSER "$@"
+    fi
+else
+    exec /usr/bin/supervisord -c /etc/supervisor/conf.d/supervisord.conf
+fi

@@ -1,0 +1,47 @@
+# =================================================================
+# Stage 1: Base
+# =================================================================
+FROM git.portovelho.ro.gov.br/desis/registry/php:8.4-fpm-nginx AS base
+
+
+# =================================================================
+# Stage 2: Composer dependencies
+# =================================================================
+FROM base AS composer
+WORKDIR /var/www/html
+
+COPY composer.json composer.lock ./
+
+RUN composer install --no-dev --no-interaction --no-plugins --no-scripts --prefer-dist
+
+# =================================================================
+# Stage 3: Frontend assets compilation
+# =================================================================
+FROM node:20 AS static-assets
+WORKDIR /app
+COPY . .
+COPY --from=composer --chown=www-data:www-data /var/www/html .
+RUN npm install
+RUN npm run build
+
+
+# =================================================================
+# Final Stage: Production image
+# =================================================================
+FROM base
+WORKDIR /var/www/html
+
+USER root
+
+# Copy application files from previous stages
+COPY --from=composer --chown=www-data:www-data /var/www/html .
+COPY --chown=www-data:www-data . ./
+COPY --from=static-assets --chown=www-data:www-data /app/public ./public
+
+# Copy application source code
+
+
+USER www-data
+
+HEALTHCHECK --interval=21s --timeout=20s --retries=10 \
+    CMD [ "sh", "-c", "curl --insecure --silent --location --show-error --fail http://localhost:8080$HEALTHCHECK_PATH || exit 1" ]

@@ -1,0 +1,86 @@
+#!/usr/bin/env bash
+set -e
+
+echo "Iniciando container em modo PRODUÇÃO..."
+
+if [ ! -z "$WWWUSER" ]; then
+    echo "Ajustando UID do usuario sail para $WWWUSER..."
+    usermod -u $WWWUSER sail
+fi
+
+if [ ! -d /.composer ]; then
+    mkdir /.composer
+fi
+chmod -R ugo+rw /.composer
+
+echo "Verificando permissoes..."
+chown -R sail:sail /var/www/html/storage
+chown -R sail:sail /var/www/html/bootstrap/cache
+chmod -R 775 /var/www/html/storage
+chmod -R 775 /var/www/html/bootstrap/cache
+
+# ✅ Garante que a pasta media existe DENTRO do disco correto do Spatie
+if [ ! -d /var/www/html/storage/app/public/media ]; then
+    echo "Criando diretorio storage/app/public/media..."
+    mkdir -p /var/www/html/storage/app/public/media
+fi
+chown -R sail:sail /var/www/html/storage/app/public/media
+chmod -R 775 /var/www/html/storage/app/public/media
+
+if [ -d /var/www/html/public/build ]; then
+    chmod -R 755 /var/www/html/public/build
+    echo "Diretorio public/build configurado"
+fi
+
+if [ -d /home/sail/.cache/puppeteer ]; then
+    chown -R sail:sail /home/sail/.cache
+    chmod -R 755 /home/sail/.cache
+    echo "Cache do Puppeteer configurado"
+fi
+
+echo "Configurando links simbolicos..."
+# ✅ Remove qualquer symlink ou diretório antigo antes de recriar
+if [ -L /var/www/html/public/storage ] || [ -d /var/www/html/public/storage ]; then
+    rm -rf /var/www/html/public/storage
+fi
+gosu sail php /var/www/html/artisan storage:link || echo "Erro ao criar links simbolicos"
+
+# ✅ Valida se o symlink foi criado corretamente
+if [ -L /var/www/html/public/storage ]; then
+    echo "Symlink public/storage criado com sucesso"
+else
+    echo "ATENCAO: Symlink public/storage NAO foi criado!"
+fi
+
+echo "Configurando permissoes do PHP-FPM..."
+mkdir -p /run/php
+chmod 755 /run/php
+
+echo "Limpando caches antigos..."
+gosu sail php /var/www/html/artisan optimize:clear || true
+
+echo "Recriando caches do Laravel..."
+if gosu sail php /var/www/html/artisan config:cache 2>/dev/null; then
+    echo "Cache de configuracao criado"
+else
+    echo "Nao foi possivel criar cache de configuracao"
+fi
+
+if gosu sail php /var/www/html/artisan view:cache 2>/dev/null; then
+    echo "Cache de views criado"
+else
+    echo "Nao foi possivel criar cache de views"
+fi
+
+if gosu sail php /var/www/html/artisan route:cache 2>/dev/null; then
+    echo "Cache de rotas criado"
+else
+    echo "Cache de rotas nao criado (isso pode ser normal)"
+fi
+
+echo "Inicializacao completa. Iniciando supervisord..."
+if [ $# -gt 0 ]; then
+    exec gosu sail "$@"
+else
+    exec /usr/bin/supervisord -c /etc/supervisor/conf.d/supervisord.conf
+fi
