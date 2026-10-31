@@ -96,6 +96,15 @@ if [ -f /var/www/html/package.json ]; then
     else
         echo "node_modules ja existe. Pulando instalacao."
     fi
+
+    # No servidor (VITE_DEV_SERVER=false) o navegador nao alcanca o Vite dev
+    # server: compila os assets e apaga o public/hot, senao o Laravel continua
+    # apontando JS/CSS/fontes para http://0.0.0.0:<porta>.
+    if [ "$VITE_DEV_SERVER" = "false" ]; then
+        echo "VITE_DEV_SERVER=false. Compilando assets (npm run build)..."
+        rm -f public/hot
+        $AS_OWNER npm run build
+    fi
 fi
 # ------------------------------------------
 
