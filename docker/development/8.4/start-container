@@ -67,6 +67,18 @@ if [ ! -f /var/www/html/.env ] && [ -f /var/www/html/.env.example ]; then
 fi
 # ---------------------------------
 
+# --- Banco SQLite (database.sqlite nao vai para o git) ---
+# Sem o arquivo, cache/sessao/fila (driver database) quebram e os workers
+# do supervisor ficam reiniciando. Cria o arquivo e aplica as migrations.
+if grep -qE '^DB_CONNECTION=sqlite' /var/www/html/.env 2>/dev/null; then
+    if [ ! -f /var/www/html/database/database.sqlite ]; then
+        echo "database.sqlite ausente. Criando..."
+        $AS_OWNER touch /var/www/html/database/database.sqlite
+    fi
+    $AS_OWNER php artisan migrate --force --no-interaction
+fi
+# ---------------------------------------------------------
+
 # --- Criar link simbolico do storage se nao existir ---
 if [ ! -L /var/www/html/public/storage ]; then
     echo "Criando link simbolico do storage..."
